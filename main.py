@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from fruitname import fruitname
+from fruitname import realfruit
 
 app = Flask(__name__)
 
@@ -14,7 +15,8 @@ def hello():
 @app.route('/test', methods=['POST', 'GET'])
 def test():
     name = fruitname()
-    return render_template('main.html', name=name)
+    flg = realfruit(name)
+    return render_template('main.html', name=name, flg=flg)
 
 
 if __name__ == "__main__":
